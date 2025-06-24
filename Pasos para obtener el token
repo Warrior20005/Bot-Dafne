@@ -1,0 +1,24 @@
+🚀 Bot-Dafne
+Bot Raid con comandos profesionales para Discord
+
+🎯 ¿Cómo obtener el Token del bot desde cero?
+Ve al siguiente enlace:
+👉 https://discord.com/developers/applications
+
+Haz clic en "New Application", escribe un nombre para tu bot (por ejemplo, DafneBot) y da clic en "Create".
+
+En el panel izquierdo, selecciona "OAuth2" y luego "URL Generator".
+
+Marca las siguientes opciones:
+
+Scopes: bot
+
+Bot Permissions: Administrator
+
+Copia el enlace generado en la parte inferior (campo Generated URL) y pégalo en tu navegador para invitar al bot a tu servidor.
+
+Luego, en el menú de la izquierda, selecciona "Bot", haz clic en "Reset Token" y confirma.
+🔐 Aparecerá el token del bot, que deberás copiar y guardar (¡No lo compartas públicamente!).
+
+Ya tienes todo listo para conectar el token a tu código en Python con discord.py.
+
